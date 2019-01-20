@@ -1,0 +1,147 @@
+
+Current configuration : 3245 bytes
+!
+! Last configuration change at 00:49:20 UTC Mon Mar 1 1993
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Switch5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1500
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3208125952
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3208125952
+ revocation-check none
+ rsakeypair TP-self-signed-3208125952
+!
+!
+crypto pki certificate chain TP-self-signed-3208125952
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 33323038 31323539 3532301E 170D3933 30333031 30303030
+  35365A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 32303831
+  32353935 3230819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  81008E5C CCD016F1 1CD3C4D2 6037DC43 FEF0AC37 B144FFBB A19DB1C3 C2192321
+  9DFF9459 A9E94CD5 D3451B34 C85D0CBB 78A5EDF9 6CBA2638 8E15E20C D31EAFFC
+  0BD81D5C 314F01EE 9CEED356 89122379 139B4098 1B1D4BEC A41FC100 6182EC41
+  A1114D09 DD01A628 A9020E0C 2A59169A F4CA1E6B 42B0838A DE3314B5 263A356B
+  532B0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 14FA36B6 A160B174 A85735DC 7F056E8F 9F00B21A 10301D06
+  03551D0E 04160414 FA36B6A1 60B174A8 5735DC7F 056E8F9F 00B21A10 300D0609
+  2A864886 F70D0101 05050003 81810038 02F81362 4B98D4B1 EA80AF58 84CAC629
+  9B7C935B CFFDA481 DF11D615 D856667B A45C79BD A47FEDD3 AA47998E 6674D513
+  8356894A 69D28FFB 149A84D7 E3BDA984 FB56C8EA 913419AF 6FDDE5F0 0E9AA4F8
+  7CC8495B EBEC9B83 1D6EB7FE 8B603AF1 4F81FEDE 41C572D2 4FF4763A D54AE3FC
+  447DA75E 1C1673DC BE77DEE4 156E09
+        quit
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 200,300,500
+ switchport mode trunk
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ switchport access vlan 400
+ switchport mode access
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan300
+ ip address 172.18.0.1 255.255.255.240
+!
+interface Vlan400
+ ip address 172.18.0.66 255.255.255.252
+!
+ip http server
+ip http secure-server
+ip route 172.18.0.32 255.255.255.224 172.18.0.65
+!
+!
+no vstack
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

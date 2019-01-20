@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "LIMA2" do |lima2|
+  lima2.vm.box = "jborean93/WindowsServer2016"
+  lima2.vm.boot_timeout = 600
+  lima2.vm.hostname = "LIMA2"
+  end
+end

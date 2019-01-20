@@ -1,0 +1,49 @@
+# Configuratie van Router 3
+
+```
+enable
+erase startup-config
+y
+delete vlan.dat
+yes
+y
+configure terminal
+no ip domain-lookup
+hostname Router3
+enable secret teamred
+line console 0
+password project3
+exec-timeout 5
+login
+exit
+username admin secret teamred
+service password-encryption
+line vty 0 15
+password project3
+exec-timeout 5
+login
+transport input ssh
+exit
+
+configure terminal
+interface g0/1
+ip address 192.0.2.5 255.255.255.252
+no shutdown
+interface S0/1/0
+ip address 192.0.2.10 255.255.255.252
+no shutdown
+interface g0/0
+ip address 192.0.2.18 255.255.255.252
+no shutdown
+end
+
+configure terminal
+router rip
+version 2
+default-information originate
+network 192.0.2.4
+network 192.0.2.8
+network 192.0.2.16
+end
+write
+```

@@ -1,0 +1,156 @@
+Success rate is 80 percent (4/5), round-trip min/avg/max = 1/3/9 ms
+switch6(config-if)#ip route 172.18.0.0 255.255.255.224 gigabitEthernet 0/2
+% Must specify a L3 port as the next hop interface
+switch6(config)#
+switch6(config)#ip route 172.18.0.0 255.255.255.224 172.18.0.66
+switch6(config)#do show run
+Building configuration...
+
+Current configuration : 3285 bytes
+!
+! Last configuration change at 00:00:49 UTC Mon Mar 1 1993
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname switch6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1500
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3210970880
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3210970880
+ revocation-check none
+ rsakeypair TP-self-signed-3210970880
+!
+!
+crypto pki certificate chain TP-self-signed-3210970880
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 33323130 39373038 3830301E 170D3933 30333031 30303030
+  35365A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 32313039
+  37303838 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100BBCE 1766AC41 588D5268 C555B7E8 A8AD98A0 A30E8752 0DB799D8 B6922652
+  B343BC07 6C063A41 58F91036 4676FFE6 BB608567 8EE67D30 300E4B9E C1B7DBD3
+  481FFA26 7F60047C 121DA468 DB979F4C 42ACA757 E096A915 9DF0C6D6 58442D57
+  908E31B5 27F3F82E 89E0B3C8 FFAC3D9E E2948AB0 BF12BD74 24041175 729B0EA8
+  25690203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 14B15EE7 2143D396 666CECC8 30D81C51 D1D1F464 EC301D06
+  03551D0E 04160414 B15EE721 43D39666 6CECC830 D81C51D1 D1F464EC 300D0609
+  2A864886 F70D0101 05050003 8181004F 0836F3E1 45B39B53 FA1A0BD2 76F39A5C
+  12E54E54 8CA4E876 9BE820B7 4ACC9735 A44C1497 6248050F 7C9E2262 E1218E46
+  B3827DE2 00410E6B ED8C3229 E9A515E3 0C7D495A 0FB09AE8 01BE44C0 4E5025F5
+  C5DF2BEE 7E018C1F DDF76EEB B50D6978 868219AF DC3D98D4 B1387B74 20435299
+  792DC6CD 2D85E232 51874458 F88803
+        quit
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 300
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 200,300,500
+ switchport mode trunk
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ switchport access vlan 400
+!
+interface GigabitEthernet0/2
+ switchport access vlan 400
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan400
+ ip address 172.18.0.65 255.255.255.252
+!
+interface Vlan500
+ ip address 172.18.0.33 255.255.255.224
+!
+ip http server
+ip http secure-server
+ip route 172.18.0.0 255.255.255.224 172.18.0.66
+!
+!
+vstack
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end
